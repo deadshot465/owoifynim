@@ -1,6 +1,8 @@
 import sequtils
 
 proc interleaveArrays*[T](a: openArray[T], b: openArray[T]): seq[T] =
+    ## Helper function to interleave and combine a sequence of strings and a sequence of spaces.
+    ## Returns an interleaved array.
     var arr: seq[T] = @[]
     var observed = a.toSeq()
     var other = b.toSeq()

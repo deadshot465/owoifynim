@@ -9,6 +9,7 @@ type
 
 proc initWord*(word: string): Word =
   ## Initializes a new ``Word`` object.
+  ## The basic unit of the owoify function.
   Word(word: word, replacedWords: @[])
 
 proc searchValueContainsReplacedWords(word: Word, searchValue: Regex, replaceValue: string): bool =
@@ -22,6 +23,7 @@ proc searchValueContainsReplacedWords(word: Word, searchValue: Regex, replaceVal
   )
 
 proc replace*(word: var Word, searchValue: Regex, replaceValue: string, replaceReplacedWords: bool = false) =
+  ## Replace all matched items with a string.
   if not replaceReplacedWords and searchValueContainsReplacedWords(word, searchValue, replaceValue):
     return
 
@@ -40,6 +42,7 @@ proc replace*(word: var Word, searchValue: Regex, replaceValue: string, replaceR
     word.word = replacingWord
 
 proc replaceWithProcSingle*(word: var Word, searchValue: Regex, op: proc (): string{.closure.}, replaceReplacedWords: bool = false) =
+  ## Replace all matched items by repeatedly calling a proc that doesn't accept any parameter and returns a string.
   let replaceValue = op()
   
   if not replaceReplacedWords and searchValueContainsReplacedWords(word, searchValue, replaceValue):
@@ -61,6 +64,7 @@ proc replaceWithProcSingle*(word: var Word, searchValue: Regex, op: proc (): str
     word.word = replacingWord
 
 proc replaceWithProcMultiple*(word: var Word, searchValue: Regex, op: proc(x: string, y: string): string{.closure.}, replaceReplacedWords: bool = false) =
+  ## Replace all matched items by repeated calling a proc that accepts two strings and returns a string.
   if word.word.findAll(searchValue, 0).len() == 0:
     return
 

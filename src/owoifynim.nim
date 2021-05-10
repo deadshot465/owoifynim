@@ -10,6 +10,10 @@ let WORD_REGEX = re"[^\s]+"
 let SPACE_REGEX = re"\s+"
 
 proc owoify*(source: string, level: string = "owo"): string =
+  ## The main entry point of the owoify function.
+  ## Pass in the source string and the desired owoify level.
+  ## Currently, there are three levels available (from soft to hard): owo, uwu, uvu.
+  ## Passing an unsupported owoness level will result in an exception.
   let wordMatches = source.findAll(WORD_REGEX, 0)
   let spaceMatches = source.findAll(SPACE_REGEX, 0)
 
