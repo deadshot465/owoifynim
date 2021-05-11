@@ -1,6 +1,9 @@
 # owoifynim
 Turning your worst nightmare into a Nim package.
 
+[![Build Status](https://nimble.directory/ci/badges/jester/nimdevel/status.svg)](https://nimble.directory/ci/badges/jester/nimdevel/output.html)
+
+
 This is a Nim port of [mohan-cao's owoify-js](https://github.com/mohan-cao/owoify-js), which will help you turn any string into nonsensical babyspeak similar to LeafySweet's infamous Chrome extension.
 
 Just like my other Owoify ports, three levels of owoness are available:
