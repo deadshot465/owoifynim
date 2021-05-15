@@ -6,10 +6,13 @@
 # To run these tests, simply execute `nimble test`.
 
 import owoifynim
+import strutils
 import system
 import unittest
 
 let SOURCE = "Hello World! This is the string to owo! Kinda cute, isn't it?"
+let POKEMON_NAME_LIST_PATH = "assets/pokemons.txt"
+let WAR_AND_PEACE_PATH = "assets/war_and_peace_chapter01-20.txt"
 
 test "can owoify":
   check owoify(SOURCE) != SOURCE
@@ -35,3 +38,24 @@ test "should give different results when the levels are owo and uvu":
 
 test "should give different results when the levels are uwu and uvu":
   check owoify(SOURCE, "uwu") != owoify(SOURCE, "uvu")
+
+test "should owoify pokemon names":
+  let pokemons = readFile(POKEMON_NAME_LIST_PATH)
+  let pokemonNames = pokemons.splitLines()
+  for name in pokemonNames:
+    let nameWithOwo = owoify(name)
+    let nameWithUwu = owoify(name, "uwu")
+    let nameWithUvu = owoify(name, "uvu")
+    check nameWithOwo != ""
+    check nameWithUwu != ""
+    check nameWithUvu != ""
+
+# For some reason this part hangs indefinitely.
+# test "should owoify long text":
+#    let text = readFile(WAR_AND_PEACE_PATH)
+#    let textWithOwo = owoify(text)
+#    let textWithUwu = owoify(text, "uwu")
+#    let textWithUvu = owoify(text, "uvu")
+#    check textWithOwo != ""
+#    check textWithUwu != ""
+#    check textWithUvu != ""
