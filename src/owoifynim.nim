@@ -44,3 +44,9 @@ proc owoify*(source: string, level: string = "owo"): string =
 
   let res = interleaveArrays(words, spaces)
   return join(res.map(proc (w: Word): string = w.toString()), "")
+
+proc uwuify*(source: string): string =
+    return owoify(source, "uwu")
+
+proc uvuify*(source: string): string =
+    return owoify(source, "uvu")

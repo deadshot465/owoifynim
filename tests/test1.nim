@@ -26,6 +26,16 @@ test "can uwu":
 test "can uvu":
   check owoify(SOURCE, "uvu") != ""
 
+test "can uwu using uwuify":
+    let result = uwuify(SOURCE)
+    check result != ""
+    check result != SOURCE
+
+test "can uvu using uvuify":
+    let result = uvuify(SOURCE)
+    check result != ""
+    check result != SOURCE
+
 test "should raise exception when the level is unsupported":
   expect(Exception):
     discard owoify(SOURCE, "123")

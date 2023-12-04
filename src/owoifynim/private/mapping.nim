@@ -47,10 +47,14 @@ let LY_TO_WY_UPPER* = re"Ly"
 let LY_TO_WY_LOWER* = re"ly"
 let PLE_TO_PWE* = re"([Pp])le"
 let NR_TO_NW_UPPER* = re"NR"
-let NR_TO_NW_LOWER* = re"nr"
+let NR_TO_NW_LOWER* = re"([Nn])r"
+let MEM_TO_MWEM_UPPER* = re"Mem"
+let MEM_TO_MWEM_LOWER* = re"mem"
+let NYWO_TO_NYO* = re"([Nn])ywo"
 let FUC_TO_FWUC* = re"([Ff])uc"
 let MOM_TO_MWOM* = re"([Mm])om"
-let ME_TO_MWE* = re"([Mm])e"
+let ME_TO_MWE_UPPER* = re"^Me$"
+let ME_TO_MWE_LOWER* = re"^me$"
 let N_VOWEL_TO_NY_FIRST* = re"n([aeiou])"
 let N_VOWEL_TO_NY_SECOND* = re"N([aeiou])"
 let N_VOWEL_TO_NY_THIRD* = re"N([AEIOU])"
@@ -63,6 +67,15 @@ let YOU_TO_U_LOWER* = re"\byou\b"
 let TIME_TO_TIM* = re"\b([Tt])ime\b"
 let OVER_TO_OWOR* = re"([Oo])ver"
 let WORSE_TO_WOSE* = re"([Ww])orse"
+let GREAT_TO_GWATE* = re"([Gg])reat"
+let AVIAT_TO_AWIAT* = re"([Aa])viat"
+let DEDICAT_TO_DEDITAT* = re"([Dd])edicat"
+let REMEMBER_TO_REMBER* = re"([Rr])emember"
+let WHEN_TO_WEN* = re"([Ww])hen"
+let FRIGHTENED_TO_FRIGTEN* = re"([Ff])righten(ed)*"
+let MEME_TO_MEM_FIRST* = re"Meme"
+let MEME_TO_MEM_SECOND* = re"Mem"
+let FEEL_TO_FELL* = re"^([Ff])eel$"
 
 let FACES = [
     "(・`ω´・)", ";;w;;", "owo", "UwU", ">w<", "^w^", "(* ^ ω ^)",
@@ -211,8 +224,17 @@ proc mapPleToPwe*(input: var Word) =
 
 
 proc mapNrToNw*(input: var Word) =
-    input.replace(NR_TO_NW_LOWER, "nw")
+    input.replace(NR_TO_NW_LOWER, "$1w")
     input.replace(NR_TO_NW_UPPER, "NW")
+
+
+proc mapMemToMwem*(input: var Word) =
+    input.replace(MEM_TO_MWEM_UPPER, "mwem")
+    input.replace(MEM_TO_MWEM_LOWER, "Mwem")
+
+
+proc unmapNywoToNyo*(input: var Word) =
+    input.replace(NYWO_TO_NYO, "$1yo")
 
 
 proc mapFucToFwuc*(input: var Word) =
@@ -224,7 +246,8 @@ proc mapMomToMwom*(input: var Word) =
 
 
 proc mapMeToMwe*(input: var Word) =
-    input.replace(ME_TO_MWE, "$1we")
+    input.replace(ME_TO_MWE_UPPER, "Mwe")
+    input.replace(ME_TO_MWE_LOWER, "mwe")
 
 
 proc mapNVowelToNy*(input: var Word) =
@@ -261,3 +284,36 @@ proc mapOverToOwor*(input: var Word) =
 
 proc mapWorseToWose*(input: var Word) =
     input.replace(WORSE_TO_WOSE, "$1ose")
+
+
+proc mapGreatToGwate*(input: var Word) =
+    input.replace(GREAT_TO_GWATE, "$1wate")
+
+
+proc mapAviatToAwiat*(input: var Word) =
+    input.replace(AVIAT_TO_AWIAT, "$1wiat")
+
+
+proc mapDedicatToDeditat*(input: var Word) =
+    input.replace(DEDICAT_TO_DEDITAT, "$1editat")
+
+
+proc mapRememberToRember*(input: var Word) =
+    input.replace(REMEMBER_TO_REMBER, "$1ember")
+
+
+proc mapWhenToWen*(input: var Word) =
+    input.replace(WHEN_TO_WEN, "$1en")
+
+
+proc mapFrightenedToFrigten*(input: var Word) =
+    input.replace(FRIGHTENED_TO_FRIGTEN, "$1rigten")
+
+
+proc mapMemeToMem*(input: var Word) =
+    input.replace(MEME_TO_MEM_FIRST, "mem")
+    input.replace(MEME_TO_MEM_SECOND, "Mem")
+
+
+proc mapFeelToFell*(input: var Word) =
+    input.replace(FEEL_TO_FELL, "$1ell")

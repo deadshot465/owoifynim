@@ -2,8 +2,11 @@ import "./mapping"
 
 let SPECIFIC_WORD_MAPPING_LIST* = [
     mapFucToFwuc, mapMomToMwom, mapTimeToTim, mapMeToMwe,
-    mapNVowelToNy, mapOverToOwor, mapOveToUv, mapHahaToHeheXd,
-    mapTheToTeh, mapYouToU, mapReadToWead, mapWorseToWose
+    mapOverToOwor, mapOveToUv, mapHahaToHeheXd,
+    mapTheToTeh, mapYouToU, mapReadToWead, mapWorseToWose,
+    mapGreatToGwate, mapAviatToAwiat, mapDedicatToDeditat,
+    mapRememberToRember, mapWhenToWen, mapFrightenedToFrigten,
+    mapMemeToMem, mapFeelToFell
 ]
 
 let UVU_MAPPING_LIST* = [
@@ -18,9 +21,9 @@ let UWU_MAPPING_LIST* = [
 ]
 
 let OWO_MAPPING_LIST* = [
-    mapLlToWw, mapVowelOrRExceptOLToWl, mapOldToOwld,
+    mapNVowelToNy, mapLlToWw, mapVowelOrRExceptOLToWl, mapOldToOwld,
     mapOlToOwl, mapLOrROToWo, mapSpecificConsonantsOToLetterAndWo,
     mapVOrWLeToWal, mapFiToFwi, mapVerToWer, mapPoiToPwoi,
     mapSpecificConsonantsLeToLetterAndWal, mapConsonantRToConsonantW,
-    mapLyToWy, mapPleToPwe, mapNrToNw
+    mapLyToWy, mapPleToPwe, mapNrToNw, mapMemToMwem, unmapNywoToNyo
 ]
